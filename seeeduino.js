@@ -13,7 +13,18 @@
         blocks: [
         ]
     };
+    
+    var potentialDevices = [];
+    ext._deviceConnected = function(dev) {
+        console.log(dev);
+        potentialDevices.push(dev);
 
+        if (!device) {
+            tryNextDevice();
+        }
+    }
+    
+    var serial_info = {type: 'serial'};
     // Register the extension
-    ScratchExtensions.register('Sample extension', descriptor, ext);
+    ScratchExtensions.register('Seeeduino', descriptor, ext, serial_info);
 })({});
